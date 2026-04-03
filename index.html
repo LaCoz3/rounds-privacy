@@ -5,310 +5,447 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rounds — Privacy Policy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:        #1C1B1A;
-      --surface:   #242320;
-      --border:    #3D3B38;
-      --ink:       #F0EDE8;
-      --muted:     #9A9590;
-      --hint:      #5A5753;
-      --red:       #D94F4F;
-      --blue:      #4A7EC4;
-      --gold:      #BF9424;
-      --purple:    #8860C8;
+      --bg:      #1C1B1A;
+      --surface: #252422;
+      --raised:  #2E2C2A;
+      --border:  #3D3B38;
+      --ink:     #F0EDE8;
+      --muted:   #9A9590;
+      --hint:    #5A5753;
+      --red:     #D94F4F;
+      --blue:    #4A7EC4;
+      --gold:    #BF9424;
+      --purple:  #8860C8;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
-      background-color: var(--bg);
+      background: var(--bg);
       color: var(--ink);
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 15px;
-      line-height: 1.75;
+      line-height: 1.7;
       min-height: 100vh;
     }
 
-    /* ── Header ── */
-    header {
-      border-bottom: 1px solid var(--border);
-      padding: 24px 0;
+    /* Arc background */
+    .arc-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+      opacity: 0.035;
+    }
+    .arc-bg svg {
+      position: absolute;
+      top: -180px;
+      right: -180px;
+      width: 640px;
+      height: 640px;
     }
 
-    .header-inner {
+    .container {
+      position: relative;
+      z-index: 1;
       max-width: 680px;
       margin: 0 auto;
       padding: 0 24px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
     }
 
-    .logo-mark svg {
-      width: 32px;
-      height: 32px;
+    /* Header */
+    header {
+      padding: 56px 0 44px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .app-icon {
+      width: 72px;
+      height: 72px;
+      flex-shrink: 0;
+    }
+
+    .header-title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
     .wordmark {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      font-size: 18px;
-      letter-spacing: 0.12em;
-      color: var(--ink);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
     }
 
-    /* ── Main content ── */
-    main {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 56px 24px 96px;
-    }
-
-    .page-title {
+    h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
+      font-weight: 600;
       font-size: 28px;
+      letter-spacing: -0.02em;
       color: var(--ink);
-      margin-bottom: 6px;
-      letter-spacing: -0.01em;
+      line-height: 1.15;
     }
 
-    .updated {
+    .header-sub {
       font-family: 'DM Mono', monospace;
       font-size: 12px;
       color: var(--hint);
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
+      margin-bottom: 18px;
+    }
+
+    .arc-pills {
+      display: flex;
+      gap: 6px;
+    }
+    .arc-pill {
+      width: 24px;
+      height: 3px;
+      border-radius: 2px;
+    }
+
+    /* Intro card */
+    .intro-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--red);
+      border-radius: 8px;
+      padding: 18px 20px;
       margin-bottom: 48px;
-    }
-
-    .intro {
+      font-size: 14px;
       color: var(--muted);
-      margin-bottom: 48px;
-      font-size: 15px;
-      border-left: 2px solid var(--border);
-      padding-left: 16px;
+      line-height: 1.7;
     }
 
-    section {
-      margin-bottom: 40px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    section:last-child {
-      border-bottom: none;
-    }
-
-    h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 600;
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 16px;
-    }
-
-    p {
-      color: var(--muted);
-      margin-bottom: 14px;
-      font-size: 15px;
-    }
-
-    p:last-child {
-      margin-bottom: 0;
-    }
-
-    strong {
-      color: var(--ink);
-      font-weight: 500;
-    }
-
-    a {
-      color: var(--red);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
+    /* Doc type pills */
     .doc-pills {
       display: flex;
-      gap: 8px;
+      gap: 7px;
       flex-wrap: wrap;
-      margin-top: 20px;
+      margin-top: 16px;
     }
-
     .pill {
       font-family: 'DM Mono', monospace;
       font-size: 10px;
-      letter-spacing: 0.06em;
-      padding: 4px 10px;
-      border-radius: 4px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 3px;
       border: 1px solid;
     }
-
     .pill-red    { color: var(--red);    border-color: var(--red); }
     .pill-blue   { color: var(--blue);   border-color: var(--blue); }
     .pill-gold   { color: var(--gold);   border-color: var(--gold); }
     .pill-purple { color: var(--purple); border-color: var(--purple); }
 
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 32px 24px;
-      text-align: center;
+    /* Sections */
+    .section-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 48px;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 0.45s ease forwards;
     }
 
-    footer p {
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-group:nth-child(1) { animation-delay: 0.04s; }
+    .section-group:nth-child(2) { animation-delay: 0.10s; }
+    .section-group:nth-child(3) { animation-delay: 0.16s; }
+    .section-group:nth-child(4) { animation-delay: 0.22s; }
+    .section-group:nth-child(5) { animation-delay: 0.28s; }
+    .section-group:nth-child(6) { animation-delay: 0.34s; }
+    .section-group:nth-child(7) { animation-delay: 0.40s; }
+    .section-group:nth-child(8) { animation-delay: 0.46s; }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--hint);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      opacity: 0.5;
+    }
+
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--red);
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--ink);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-body {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .section-body p {
+      margin-bottom: 10px;
+    }
+
+    .section-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-body strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .section-body a {
+      color: var(--red);
+      text-decoration: none;
+    }
+
+    .section-body a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-word {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--hint);
+    }
+
+    .footer-tagline {
       font-family: 'DM Mono', monospace;
       font-size: 11px;
       color: var(--hint);
-      letter-spacing: 0.04em;
-      margin: 0;
+      letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 24px; }
+      header { padding: 36px 0 28px; }
+      .container { padding: 0 16px; }
+      .app-icon { width: 56px; height: 56px; }
     }
   </style>
 </head>
 <body>
 
+<!-- Arc background -->
+<div class="arc-bg">
+  <svg viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 0 220 C 152 220 188 62 340 62 C 492 62 528 220 680 220" fill="none" stroke="#D94F4F" stroke-width="89" stroke-linecap="butt"/>
+    <path d="M 0 330 C 156 330 192 182 340 182 C 488 182 524 330 680 330" fill="none" stroke="#4A7EC4" stroke-width="68" stroke-linecap="butt"/>
+    <path d="M 0 400 C 156 400 192 498 340 498 C 488 498 524 400 680 400" fill="none" stroke="#BF9424" stroke-width="68" stroke-linecap="butt"/>
+    <path d="M 0 510 C 152 510 188 618 340 618 C 492 618 528 510 680 510" fill="none" stroke="#8860C8" stroke-width="89" stroke-linecap="butt"/>
+  </svg>
+</div>
+
+<div class="container">
+
   <header>
-    <div class="header-inner">
-      <div class="logo-mark">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16 4 A12 12 0 0 1 28 16" stroke="#D94F4F" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M28 16 A12 12 0 0 1 16 28" stroke="#4A7EC4" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M16 28 A12 12 0 0 1 4 16" stroke="#BF9424" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M4 16 A12 12 0 0 1 16 4" stroke="#8860C8" stroke-width="2.5" stroke-linecap="round"/>
+    <div class="header-top">
+      <!-- Thin logo inline -->
+      <div class="app-icon">
+        <svg width="72" height="72" viewBox="0 0 680 690" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="lp" x="-5%" y="-80%" width="110%" height="260%">
+              <feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-color="#000000" flood-opacity="0.75"/>
+            </filter>
+          </defs>
+          <g filter="url(#lp)">
+            <path d="M 0 300 C 160 300 200 90 340 90 C 480 90 520 300 680 300" fill="none" stroke="#D94F4F" stroke-width="22" stroke-linecap="round"/>
+            <path d="M 0 330 C 170 330 205 155 340 155 C 475 155 510 330 680 330" fill="none" stroke="#4A7EC4" stroke-width="22" stroke-linecap="round"/>
+            <path d="M 0 352 C 170 352 205 525 340 525 C 475 525 510 352 680 352" fill="none" stroke="#BF9424" stroke-width="22" stroke-linecap="round"/>
+            <path d="M 0 382 C 160 382 200 590 340 590 C 480 590 520 382 680 382" fill="none" stroke="#8860C8" stroke-width="22" stroke-linecap="round"/>
+          </g>
+          <path d="M 0 300 C 160 300 200 90 340 90 C 480 90 520 300 680 300" fill="none" stroke="#D94F4F" stroke-width="22" stroke-linecap="round"/>
+          <path d="M 0 330 C 170 330 205 155 340 155 C 475 155 510 330 680 330" fill="none" stroke="#4A7EC4" stroke-width="22" stroke-linecap="round"/>
+          <path d="M 0 352 C 170 352 205 525 340 525 C 475 525 510 352 680 352" fill="none" stroke="#BF9424" stroke-width="22" stroke-linecap="round"/>
+          <path d="M 0 382 C 160 382 200 590 340 590 C 480 590 520 382 680 382" fill="none" stroke="#8860C8" stroke-width="22" stroke-linecap="round"/>
         </svg>
       </div>
-      <span class="wordmark">ROUNDS</span>
+      <div class="header-title-block">
+        <div class="wordmark">Rounds</div>
+        <h1>Privacy Policy</h1>
+      </div>
+    </div>
+    <p class="header-sub">Last updated — March 30, 2026</p>
+    <div class="arc-pills">
+      <div class="arc-pill" style="background: var(--red)"></div>
+      <div class="arc-pill" style="background: var(--blue)"></div>
+      <div class="arc-pill" style="background: var(--gold)"></div>
+      <div class="arc-pill" style="background: var(--purple)"></div>
     </div>
   </header>
 
-  <main>
+  <!-- Intro -->
+  <div class="intro-card">
+    Rounds is a voice-first field sales app built for outside sales representatives. This policy explains what data the app handles, how it is processed, and what rights you have over it.
+  </div>
 
-    <h1 class="page-title">Privacy Policy</h1>
-    <p class="updated">LAST UPDATED — MARCH 30, 2026</p>
-
-    <p class="intro">
-      Rounds is a voice-first field sales app built for outside sales
-      representatives. This policy explains what data the app handles,
-      how it is processed, and what rights you have over it.
-    </p>
-
-    <section>
-      <h2>What Data Rounds Handles</h2>
-      <p>
-        <strong>Profile information</strong> — your name, territory, and
-        manager email address, entered during onboarding and stored
-        on your device.
-      </p>
-      <p>
-        <strong>Field notes</strong> — voice recordings and transcribed
-        text you create during rounds. This includes business names,
-        contact names, visit summaries, and follow-up notes.
-      </p>
-      <p>
-        <strong>App preferences</strong> — your chosen AI processing
-        level, appearance setting, and onboarding state.
-      </p>
-      <div class="doc-pills">
-        <span class="pill pill-red">ROUND LOG</span>
-        <span class="pill pill-blue">OPEN ROUNDS</span>
-        <span class="pill pill-gold">RECAP</span>
-        <span class="pill pill-purple">SCOUT</span>
+  <!-- What Data Rounds Handles -->
+  <div class="section-group">
+    <div class="section-label">01</div>
+    <div class="section-card">
+      <div class="section-title">What Data Rounds Handles</div>
+      <div class="section-body">
+        <p><strong>Profile information</strong> — your name, territory, and manager email address, entered during onboarding and stored on your device.</p>
+        <p><strong>Field notes</strong> — voice recordings and transcribed text you create during rounds. This includes business names, contact names, visit summaries, and follow-up notes.</p>
+        <p><strong>App preferences</strong> — your chosen appearance setting and onboarding state.</p>
+        <div class="doc-pills">
+          <span class="pill pill-red">Round Log</span>
+          <span class="pill pill-blue">Open Rounds</span>
+          <span class="pill pill-gold">Recap</span>
+          <span class="pill pill-purple">Scout</span>
+        </div>
       </div>
-    </section>
+    </div>
+  </div>
 
-    <section>
-      <h2>How Audio Is Handled</h2>
-      <p>
-        When you record a round, your audio is sent to OpenAI's Whisper
-        API for transcription. The audio is transmitted securely through
-        a Cloudflare Worker proxy and is not stored on any server
-        controlled by Rounds. OpenAI may retain audio for up to 30 days
-        for abuse monitoring purposes under their standard API terms.
-        No audio file is stored by Rounds after transcription is complete.
-      </p>
-      <p>
-        The transcribed text is then sent to Anthropic's Claude API to
-        organize your notes into structured document types. Only the
-        text transcript reaches Claude — no audio is involved at this
-        stage. Anthropic's standard API data handling terms apply.
-      </p>
-    </section>
+  <!-- Audio Handling -->
+  <div class="section-group">
+    <div class="section-label">02</div>
+    <div class="section-card">
+      <div class="section-title">How Audio Is Handled</div>
+      <div class="section-body">
+        <p>When you record a round, your audio is sent to OpenAI's Whisper API for transcription. The audio is transmitted securely through a Cloudflare Worker proxy and is not stored on any server controlled by Rounds. OpenAI may retain audio for up to 30 days for abuse monitoring purposes under their standard API terms. No audio file is stored by Rounds after transcription is complete.</p>
+        <p>The transcribed text is then sent to Anthropic's Claude API to organize your notes into structured document types. Only the text transcript reaches Claude — no audio is involved at this stage. Anthropic's standard API data handling terms apply.</p>
+      </div>
+    </div>
+  </div>
 
-    <section>
-      <h2>Where Your Data Is Stored</h2>
-      <p>
-        All filed rounds, open items, scout leads, calendar events, and
-        profile information are stored locally on your device. This data
-        does not leave your device except as described in the audio
-        handling section above. There is no Rounds account, no Rounds
-        server, and no cloud backup.
-      </p>
-    </section>
+  <!-- Where Data Is Stored -->
+  <div class="section-group">
+    <div class="section-label">03</div>
+    <div class="section-card">
+      <div class="section-title">Where Your Data Is Stored</div>
+      <div class="section-body">
+        <p>All filed rounds, open items, scout leads, calendar events, and profile information are stored locally on your device. This data does not leave your device except as described in the audio handling section above. There is no Rounds account, no Rounds server, and no cloud backup.</p>
+      </div>
+    </div>
+  </div>
 
-    <section>
-      <h2>Third-Party Sharing</h2>
-      <p>
-        Rounds does not sell, rent, or share your personal information
-        with any third party for marketing or advertising purposes.
-        The only third-party services that receive any data are OpenAI
-        (audio transcription) and Anthropic (text filing), both used
-        solely to provide the core features of the app.
-      </p>
-    </section>
+  <!-- Third-Party Sharing -->
+  <div class="section-group">
+    <div class="section-label">04</div>
+    <div class="section-card">
+      <div class="section-title">Third-Party Sharing</div>
+      <div class="section-body">
+        <p>Rounds does not sell, rent, or share your personal information with any third party for marketing or advertising purposes. The only third-party services that receive any data are OpenAI (audio transcription) and Anthropic (text filing), both used solely to provide the core features of the app.</p>
+      </div>
+    </div>
+  </div>
 
-    <section>
-      <h2>Data Deletion</h2>
-      <p>
-        You can permanently delete all data stored by Rounds at any time.
-        Go to <strong>Settings</strong> and tap <strong>Delete All Data</strong>.
-        This removes all rounds, open items, scout leads, calendar events,
-        and profile information from your device immediately.
-        This action cannot be undone.
-      </p>
-    </section>
+  <!-- Data Deletion -->
+  <div class="section-group">
+    <div class="section-label">05</div>
+    <div class="section-card">
+      <div class="section-title">Data Deletion</div>
+      <div class="section-body">
+        <p>You can permanently delete all data stored by Rounds at any time. Go to <strong>Settings</strong> and tap <strong>Delete All Data</strong>. This removes all rounds, open items, scout leads, calendar events, and profile information from your device immediately. This action cannot be undone.</p>
+      </div>
+    </div>
+  </div>
 
-    <section>
-      <h2>Children</h2>
-      <p>
-        Rounds is designed for professional use by adults. The app is
-        not directed at children under 13 and does not knowingly collect
-        information from children.
-      </p>
-    </section>
+  <!-- Children -->
+  <div class="section-group">
+    <div class="section-label">06</div>
+    <div class="section-card">
+      <div class="section-title">Children</div>
+      <div class="section-body">
+        <p>Rounds is designed for professional use by adults. The app is not directed at children under 13 and does not knowingly collect information from children.</p>
+      </div>
+    </div>
+  </div>
 
-    <section>
-      <h2>Changes to This Policy</h2>
-      <p>
-        If this policy changes materially, the updated date at the top
-        of this page will reflect the change. Continued use of the app
-        after any changes constitutes acceptance of the updated policy.
-      </p>
-    </section>
+  <!-- Changes -->
+  <div class="section-group">
+    <div class="section-label">07</div>
+    <div class="section-card">
+      <div class="section-title">Changes to This Policy</div>
+      <div class="section-body">
+        <p>If this policy changes materially, the updated date at the top of this page will reflect the change. Continued use of the app after any changes constitutes acceptance of the updated policy.</p>
+      </div>
+    </div>
+  </div>
 
-    <section>
-      <h2>Contact</h2>
-      <p>
-        Questions about this privacy policy can be directed to:<br />
-        <a href="phillip.lacoste@gmail.com">phillip.lacoste@gmail.com</a>
-      </p>
-    </section>
-
-  </main>
+  <!-- Contact -->
+  <div class="section-group">
+    <div class="section-label">08</div>
+    <div class="section-card">
+      <div class="section-title">Contact</div>
+      <div class="section-body">
+        <p>Questions about this privacy policy can be directed to:<br>
+        <a href="mailto:phillycoin@icloud.com">phillycoin@icloud.com</a></p>
+      </div>
+    </div>
+  </div>
 
   <footer>
-    <p>ROUNDS — THE FASTEST WAY TO DOCUMENT A SALES ROUTE</p>
+    <span class="footer-word">Rounds</span>
+    <span class="footer-tagline">The fastest way to document a sales route.</span>
   </footer>
 
+</div>
 </body>
 </html>
