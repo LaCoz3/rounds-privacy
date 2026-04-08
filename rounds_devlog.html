@@ -173,6 +173,15 @@
   .session:nth-child(7) { animation-delay: 0.40s; }
   .session:nth-child(8) { animation-delay: 0.46s; }
   .session:nth-child(9) { animation-delay: 0.52s; }
+  .session:nth-child(10) { animation-delay: 0.58s; }
+  .session:nth-child(11) { animation-delay: 0.64s; }
+  .session:nth-child(12) { animation-delay: 0.70s; }
+  .session:nth-child(13) { animation-delay: 0.76s; }
+  .session:nth-child(14) { animation-delay: 0.82s; }
+  .session:nth-child(15) { animation-delay: 0.88s; }
+  .session:nth-child(16) { animation-delay: 0.94s; }
+  .session:nth-child(17) { animation-delay: 1.00s; }
+  .session:nth-child(18) { animation-delay: 1.06s; }
 
   .session-header {
     display: flex;
@@ -253,7 +262,61 @@
     margin-top: 4px;
   }
 
-  /* ── In Progress ── */
+  /* ── Roadmap ── */
+  .roadmap {
+    border-top: 1px solid var(--border);
+    padding: 36px 0 40px;
+    margin-top: 8px;
+  }
+  .roadmap-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .roadmap-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .roadmap-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .roadmap-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 10px;
+  }
+  .roadmap-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .roadmap-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .roadmap-badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-top: 8px;
+  }
+  .badge-complete { color: var(--gold); border: 1px solid var(--gold); opacity: 0.75; }
+  .badge-coming { color: var(--blue); border: 1px solid var(--blue); }
   .in-progress-header {
     display: flex;
     align-items: center;
@@ -363,7 +426,7 @@
 <body>
 
 <div class="arc-bg">
-  <svg viewBox="0 0 680 690" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 80 680 520" xmlns="http://www.w3.org/2000/svg">
     <path d="M 0 300 C 160 300 200 90 340 90 C 480 90 520 300 680 300" fill="none" stroke="#D94F4F" stroke-width="22" stroke-linecap="round"/>
     <path d="M 0 330 C 170 330 205 155 340 155 C 475 155 510 330 680 330" fill="none" stroke="#4A7EC4" stroke-width="22" stroke-linecap="round"/>
     <path d="M 0 352 C 170 352 205 525 340 525 C 475 525 510 352 680 352" fill="none" stroke="#BF9424" stroke-width="22" stroke-linecap="round"/>
@@ -376,11 +439,11 @@
   <header>
     <div class="header-top">
       <div class="app-icon">
-        <svg width="72" height="72" viewBox="0 0 680 690" xmlns="http://www.w3.org/2000/svg">
-          <path d="M 0 300 C 160 300 200 90 340 90 C 480 90 520 300 680 300" fill="none" stroke="#D94F4F" stroke-width="22" stroke-linecap="round"/>
-          <path d="M 0 330 C 170 330 205 155 340 155 C 475 155 510 330 680 330" fill="none" stroke="#4A7EC4" stroke-width="22" stroke-linecap="round"/>
-          <path d="M 0 352 C 170 352 205 525 340 525 C 475 525 510 352 680 352" fill="none" stroke="#BF9424" stroke-width="22" stroke-linecap="round"/>
-          <path d="M 0 382 C 160 382 200 590 340 590 C 480 590 520 382 680 382" fill="none" stroke="#8860C8" stroke-width="22" stroke-linecap="round"/>
+        <svg width="72" height="54" viewBox="0 80 680 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 0 300 C 160 300 200 90 340 90 C 480 90 520 300 680 300" stroke="#D94F4F" stroke-width="22" stroke-linecap="round"/>
+          <path d="M 0 330 C 170 330 205 155 340 155 C 475 155 510 330 680 330" stroke="#4A7EC4" stroke-width="22" stroke-linecap="round"/>
+          <path d="M 0 352 C 170 352 205 525 340 525 C 475 525 510 352 680 352" stroke="#BF9424" stroke-width="22" stroke-linecap="round"/>
+          <path d="M 0 382 C 160 382 200 590 340 590 C 480 590 520 382 680 382" stroke="#8860C8" stroke-width="22" stroke-linecap="round"/>
         </svg>
       </div>
       <div class="header-title-block">
@@ -401,7 +464,15 @@
   <div class="status-bar">
     <div class="status-dot"></div>
     <div class="status-text">
-      <strong>Session 23 in progress</strong> — Settings content, coach mark audio fix, days-off setting
+      <strong>Session 25 complete</strong> — QOL fixes, manual calendar events, shimmer persistence
+    </div>
+  </div>
+
+  <!-- Roadmap banner -->
+  <div class="status-bar" style="border-color: var(--gold); margin-bottom: 20px;">
+    <div class="status-dot" style="background: var(--gold);"></div>
+    <div class="status-text">
+      <strong>Roadmap v1 complete.</strong> 25 sessions from blank project to TestFlight. Roadmap v2 coming soon — UX overhaul, Scout tab re-vision, and new features.
     </div>
   </div>
 
@@ -414,29 +485,159 @@
     <div class="in-progress-cards">
       <div class="progress-card red">
         <div>
-          <div class="progress-title">Settings Content Page</div>
-          <div class="progress-desc">Scrollable settings screen with privacy policy, security overview, devlog, and app overview in one view.</div>
-          <div class="progress-caveat">subject to change</div>
+          <div class="progress-title">Mic Button Visual Redesign</div>
+          <div class="progress-desc">Glowing red mic hero element with right-to-left waveform animation during recording. The mic is the app — make it look like it.</div>
+          <div class="progress-caveat">session 26 · opus</div>
         </div>
       </div>
-      <div class="progress-card blue">
+      <div class="progress-card red">
         <div>
-          <div class="progress-title">Coach Mark Audio Fix</div>
-          <div class="progress-desc">Feature tour chime not firing. Works on swipe-to-close but not on the guided tour steps.</div>
-          <div class="progress-caveat">subject to change</div>
-        </div>
-      </div>
-      <div class="progress-card gold">
-        <div>
-          <div class="progress-title">Days-Off Setting</div>
-          <div class="progress-desc">Per-rep work week config so Recap calculates "this week" using only working days.</div>
-          <div class="progress-caveat">subject to change</div>
+          <div class="progress-title">Start Round Button Review</div>
+          <div class="progress-desc">Rethinking the post-mic-tap flow. Does the confirmation sheet earn its place, or should recording feel more immediate?</div>
+          <div class="progress-caveat">session 26 · subject to change</div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="session-divider"></div>
+
+  <!-- SESSION 25 -->
+  <div class="session">
+    <div class="session-header">
+      <span class="session-label">Session 25</span>
+      <span class="session-date">Apr 8, 2026</span>
+      <span class="session-badge badge-shipped">Shipped</span>
+    </div>
+    <div class="commits">
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--gold)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Manual booked dates on calendar</div>
+          <div class="commit-desc">Gold + button in calendar header. Pick a date, type a label, save. Gold dot appears alongside AI-detected events. Manual events persist across restarts.</div>
+        </div>
+        <div class="commit-tag">calendar</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Whisper transcript preview</div>
+          <div class="commit-desc">Read-only transcript box appears during filing after voice recording. Display only — completely disconnected from the filing pipeline. Gone once filed.</div>
+        </div>
+        <div class="commit-tag">ux</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Bottom sheet pull-to-dismiss</div>
+          <div class="commit-desc">Gray pill handle on bottom sheets now does what it looks like it should. Pull down to dismiss. Applied to EndOfRoundSheet — others already had it.</div>
+        </div>
+        <div class="commit-tag">gesture</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">CardShimmer persistence fixed</div>
+          <div class="commit-desc">Shimmer acknowledge IDs now survive app restart. New AsyncStorage key persists dismissed states across all three tabs.</div>
+        </div>
+        <div class="commit-tag">fix</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--gold)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Recap week range respects days off</div>
+          <div class="commit-desc">Week header now shows first working day to last working day based on days-off setting. No more Sunday–Saturday when you only work weekdays.</div>
+        </div>
+        <div class="commit-tag">recap</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--blue)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Swipe-to-resolve gesture zone expanded</div>
+          <div class="commit-desc">Open Rounds swipe activation area widened slightly. Easier to grab without triggering accidental resolves.</div>
+        </div>
+        <div class="commit-tag">gesture</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSION 24 -->
+  <div class="session">
+    <div class="session-header">
+      <span class="session-label">Session 24</span>
+      <span class="session-date">Apr 7, 2026</span>
+      <span class="session-badge badge-shipped">Shipped</span>
+    </div>
+    <div class="commits">
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">OpenPill green glow bug killed</div>
+          <div class="commit-desc">iOS shadow artifact on the Open Rounds count pill eliminated. Shadow opacity and radius mathematically gated to zero when count is positive.</div>
+        </div>
+        <div class="commit-tag">fix</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Text input mode</div>
+          <div class="commit-desc">Keyboard icon in the TODAY header. Type your stop note instead of speaking it. Same filing pipeline, skips Whisper entirely.</div>
+        </div>
+        <div class="commit-tag">ux</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Connection status indicator</div>
+          <div class="commit-desc">Settings shows a colored dot — green for connected, red for offline. Test button with spinner, checkmark, or error hint. Proxy URL never displayed.</div>
+        </div>
+        <div class="commit-tag">settings</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSION 23 -->
+  <div class="session">
+    <div class="session-header">
+      <span class="session-label">Session 23</span>
+      <span class="session-date">Apr 7, 2026</span>
+      <span class="session-badge badge-shipped">Shipped</span>
+    </div>
+    <div class="commits">
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Days-off setting</div>
+          <div class="commit-desc">Work week toggles in Settings. S M T W T F S. Recap stats filter to working days only. Default: weekends off.</div>
+        </div>
+        <div class="commit-tag">settings</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Coach mark audio chime</div>
+          <div class="commit-desc">Chime fires at the confetti burst on the final coach mark slide. Same expo-av pattern as the OpenPill sound.</div>
+        </div>
+        <div class="commit-tag">polish</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Settings content links</div>
+          <div class="commit-desc">Privacy Policy, Security, Build Log, and How It Works rows in About section. Each opens its GitHub Pages URL.</div>
+        </div>
+        <div class="commit-tag">settings</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">App icon swapped to thick variant</div>
+          <div class="commit-desc">Heavier arc strokes for home screen legibility at small sizes.</div>
+        </div>
+        <div class="commit-tag">brand</div>
+      </div>
+    </div>
+  </div>
 
   <!-- SESSION 22 -->
   <div class="session">
@@ -449,40 +650,32 @@
       <div class="commit">
         <div class="commit-dot" style="background: var(--red)"></div>
         <div class="commit-body">
-          <div class="commit-title">Filing crash fixed</div>
-          <div class="commit-desc">JSON code fence strip added to worker response parsing. Rounds no longer crash when Claude wraps its response in markdown backticks.</div>
+          <div class="commit-title">TestFlight build 1.0.0 (4) submitted</div>
+          <div class="commit-desc">Live on App Store Connect. Beta distribution active. First external build.</div>
         </div>
-        <div class="commit-tag">engine</div>
-      </div>
-      <div class="commit">
-        <div class="commit-dot" style="background: var(--gold)"></div>
-        <div class="commit-body">
-          <div class="commit-title">Date intelligence in filing prompt</div>
-          <div class="commit-desc">Claude now resolves "tomorrow", "Friday", "next Tuesday" to real calendar dates at filing time. No more ambiguous date strings hitting the parser.</div>
-        </div>
-        <div class="commit-tag">engine</div>
-      </div>
-      <div class="commit">
-        <div class="commit-dot" style="background: var(--gold)"></div>
-        <div class="commit-body">
-          <div class="commit-title">Calendar dots for resolved dates</div>
-          <div class="commit-desc">parseFutureDate() now recognises ISO format from the filing engine. Gold dots appear reliably for booked onsites.</div>
-        </div>
-        <div class="commit-tag">calendar</div>
+        <div class="commit-tag">release</div>
       </div>
       <div class="commit">
         <div class="commit-dot" style="background: var(--red)"></div>
         <div class="commit-body">
-          <div class="commit-title">BookedEvent safety net</div>
-          <div class="commit-desc">All three BookedEvent creation sites wrapped in try/catch. A failed date parse never crashes the filing pipeline.</div>
+          <div class="commit-title">Filing crash fixed — JSON code fences</div>
+          <div class="commit-desc">Claude sometimes wraps JSON in markdown fences. Strip added before parse. No more silent filing failures.</div>
         </div>
-        <div class="commit-tag">reliability</div>
+        <div class="commit-tag">engine</div>
       </div>
       <div class="commit">
-        <div class="commit-dot" style="background: var(--blue)"></div>
+        <div class="commit-dot" style="background: var(--gold)"></div>
         <div class="commit-body">
-          <div class="commit-title">Tag prompt aligned to spec</div>
-          <div class="commit-desc">Unified STATUS_TAGS list. "Pending" blacklisted. Per-doc-type tag lists replaced with one shared vocabulary.</div>
+          <div class="commit-title">Date intelligence in filing</div>
+          <div class="commit-desc">"Tomorrow", "next Friday", "next week" in voice notes resolve to real ISO dates. Calendar dots appear automatically.</div>
+        </div>
+        <div class="commit-tag">engine</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Unified status tags</div>
+          <div class="commit-desc">Per-document-type tag lists replaced with one universal list. Twelve tags total. "Pending" blacklisted from filing prompt.</div>
         </div>
         <div class="commit-tag">engine</div>
       </div>
@@ -490,17 +683,17 @@
         <div class="commit-dot" style="background: var(--red)"></div>
         <div class="commit-body">
           <div class="commit-title">Network error handling</div>
-          <div class="commit-desc">AbortController on all fetch calls. User-facing error messages replace frozen spinners on timeout or failure.</div>
+          <div class="commit-desc">AbortController on all fetch calls. User-facing error messages. No more frozen spinners on timeout.</div>
         </div>
         <div class="commit-tag">reliability</div>
       </div>
       <div class="commit">
         <div class="commit-dot" style="background: var(--red)"></div>
         <div class="commit-body">
-          <div class="commit-title">TestFlight build 1.0.0 (4) submitted</div>
-          <div class="commit-desc">Build uploaded to App Store Connect. Beta distribution active.</div>
+          <div class="commit-title">CardShimmer dismiss-on-touch fixed</div>
+          <div class="commit-desc">Shimmer tap was being swallowed by gesture handlers. Moved outside GestureDetector on Open and Scout tabs.</div>
         </div>
-        <div class="commit-tag">release</div>
+        <div class="commit-tag">fix</div>
       </div>
     </div>
   </div>
@@ -516,26 +709,18 @@
       <div class="commit">
         <div class="commit-dot" style="background: var(--red)"></div>
         <div class="commit-body">
-          <div class="commit-title">CardShimmer rebuilt as interaction-based</div>
-          <div class="commit-desc">Shimmer on new stops now dismisses on touch — acknowledge once, gone forever. No more 24-hour timer. Full Reanimated rewrite.</div>
+          <div class="commit-title">CardShimmer refactored to interaction-based</div>
+          <div class="commit-desc">Shimmer was time-based (24h window). Now it's acknowledge once, gone forever. Full Reanimated rewrite.</div>
         </div>
         <div class="commit-tag">ui</div>
       </div>
       <div class="commit">
         <div class="commit-dot" style="background: var(--red)"></div>
         <div class="commit-body">
-          <div class="commit-title">Mic recording UI redesigned</div>
-          <div class="commit-desc">Live waveform animation during recording. Visual feedback that the mic is active and listening.</div>
+          <div class="commit-title">Mic recording UI redesign</div>
+          <div class="commit-desc">Live waveform visualization during recording. The mic feels alive.</div>
         </div>
         <div class="commit-tag">ui</div>
-      </div>
-      <div class="commit">
-        <div class="commit-dot" style="background: var(--red)"></div>
-        <div class="commit-body">
-          <div class="commit-title">Orphaned seen-stops system removed</div>
-          <div class="commit-desc">rounds_seen_stops_v1 system cleared out. Key retained in ALL_KEYS for cleanup on existing installs.</div>
-        </div>
-        <div class="commit-tag">cleanup</div>
       </div>
     </div>
   </div>
@@ -552,7 +737,7 @@
         <div class="commit-dot" style="background: var(--red)"></div>
         <div class="commit-body">
           <div class="commit-title">Full codebase audit</div>
-          <div class="commit-desc">Opus read 13 files end to end. Every bug, dead code path, and drift risk documented. Drove the rest of this session.</div>
+          <div class="commit-desc">Opus read 13 files. Found silent bugs, dead code, hardcoded colors, and a security gap. All addressed in one session.</div>
         </div>
         <div class="commit-tag">audit</div>
       </div>
@@ -560,49 +745,33 @@
         <div class="commit-dot" style="background: var(--red)"></div>
         <div class="commit-body">
           <div class="commit-title">API secret moved to environment variable</div>
-          <div class="commit-desc">Hardcoded plaintext secret replaced with .env pipeline. Injected at build time via app.config.ts and expo-constants.</div>
+          <div class="commit-desc">Was hardcoded plaintext. Now in .env loaded via expo-constants. Required before any App Store submission.</div>
         </div>
         <div class="commit-tag">security</div>
       </div>
       <div class="commit">
         <div class="commit-dot" style="background: var(--red)"></div>
         <div class="commit-body">
-          <div class="commit-title">Auto-theme and AI processing levels removed</div>
-          <div class="commit-desc">Two deprecated features fully stripped. Theme is manual toggle only. Filing runs one unified prompt.</div>
-        </div>
-        <div class="commit-tag">cleanup</div>
-      </div>
-      <div class="commit">
-        <div class="commit-dot" style="background: var(--purple)"></div>
-        <div class="commit-body">
-          <div class="commit-title">Cream mode fixed across four screens</div>
-          <div class="commit-desc">Scout, BusinessDetailSheet, CardShimmer, and Search all switched from hardcoded dark colors to theme tokens.</div>
+          <div class="commit-title">Cream mode fixed across 4 screens</div>
+          <div class="commit-desc">Scout, BusinessDetailSheet, CardShimmer, and Search had hardcoded dark colors. All replaced with theme tokens.</div>
         </div>
         <div class="commit-tag">theme</div>
       </div>
       <div class="commit">
-        <div class="commit-dot" style="background: var(--gold)"></div>
+        <div class="commit-dot" style="background: var(--red)"></div>
         <div class="commit-body">
-          <div class="commit-title">Recap notes scope bug fixed</div>
-          <div class="commit-desc">useEffect was referencing an undefined variable instead of managerNotes. Silent breakage — notes never saved.</div>
-        </div>
-        <div class="commit-tag">fix</div>
-      </div>
-      <div class="commit">
-        <div class="commit-dot" style="background: var(--blue)"></div>
-        <div class="commit-body">
-          <div class="commit-title">BusinessDetailSheet filter fixed</div>
-          <div class="commit-desc">"Still Open" section no longer shows resolved, completed, or closed items.</div>
-        </div>
-        <div class="commit-tag">fix</div>
-      </div>
-      <div class="commit">
-        <div class="commit-dot" style="background: var(--blue)"></div>
-        <div class="commit-body">
-          <div class="commit-title">BOOKED_TAGS unified to single source</div>
-          <div class="commit-desc">Duplicate definitions in store and worker replaced with shared import from src/constants/tags.ts.</div>
+          <div class="commit-title">Auto-theme and AI levels removed</div>
+          <div class="commit-desc">Two features that added complexity without value. Stripped clean.</div>
         </div>
         <div class="commit-tag">cleanup</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">BOOKED_TAGS unified</div>
+          <div class="commit-desc">Was defined separately in store and worker with drift risk. Single source of truth in tags.ts.</div>
+        </div>
+        <div class="commit-tag">fix</div>
       </div>
     </div>
   </div>
@@ -897,11 +1066,156 @@
     </div>
   </div>
 
-  <!-- PHASE 1 -->
+  <!-- SESSION 8 -->
   <div class="session">
     <div class="session-header">
-      <span class="session-label">Phase 1 Foundation</span>
-      <span class="session-date">Mar 26 – 27, 2026</span>
+      <span class="session-label">Session 8</span>
+      <span class="session-date">Mar 29, 2026</span>
+      <span class="session-badge badge-shipped">Shipped</span>
+    </div>
+    <div class="commits">
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Recording scale-fade transition</div>
+          <div class="commit-desc">Surrounding UI expands and fades when recording starts. Feels like the mic takes over the screen.</div>
+        </div>
+        <div class="commit-tag">ux</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Radial hold repurposed</div>
+          <div class="commit-desc">Long-press radial ring now triggers Calendar, Export, and Settings instead of Start Fresh.</div>
+        </div>
+        <div class="commit-tag">ux</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--gold)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Calendar booked onsite delete</div>
+          <div class="commit-desc">✕ button on booked onsite cards. Two-step confirm alert. Gold dot clears instantly. Source stop untouched.</div>
+        </div>
+        <div class="commit-tag">calendar</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--blue)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Open Rounds date context</div>
+          <div class="commit-desc">"From visit on Mar 26" label on every open item. Tracks where the follow-up originated.</div>
+        </div>
+        <div class="commit-tag">ux</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Coach mark tour rebuilt twice</div>
+          <div class="commit-desc">Spotlight overlay, then full 6-slide tour with transitions. Fixed blink bug, color consistency, and pill confetti offset. Phase 2 complete.</div>
+        </div>
+        <div class="commit-tag">onboarding</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSION 7 -->
+  <div class="session">
+    <div class="session-header">
+      <span class="session-label">Session 7</span>
+      <span class="session-date">Mar 29, 2026</span>
+      <span class="session-badge badge-shipped">Shipped</span>
+    </div>
+    <div class="commits">
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Garbage filter + filing progress bars</div>
+          <div class="commit-desc">Two-gate content filter blocks non-sales input. Four colored bars animate during filing with staggered checkmarks.</div>
+        </div>
+        <div class="commit-tag">engine</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--purple)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Scout routing + prompt fixes</div>
+          <div class="commit-desc">Scout entries were misrouting. Prompt hardened, NO_CONTENT strengthened, vehicle routing restored.</div>
+        </div>
+        <div class="commit-tag">engine</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--gold)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Full export rebuild — all four templates</div>
+          <div class="commit-desc">Red, Blue, Gold, and Purple exports rewritten from original HTML template designs. Red redesigned to match source PDF.</div>
+        </div>
+        <div class="commit-tag">export</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Stop card layout + touchpoint icons</div>
+          <div class="commit-desc">Contact and location on one line. Phone, email, text, visit icons on each stop card.</div>
+        </div>
+        <div class="commit-tag">ui</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSIONS 5–6 -->
+  <div class="session">
+    <div class="session-header">
+      <span class="session-label">Sessions 5 – 6</span>
+      <span class="session-date">Mar 26 – 28, 2026</span>
+      <span class="session-badge badge-shipped">Shipped</span>
+    </div>
+    <div class="commits">
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Converted from web to React Native</div>
+          <div class="commit-desc">Working HTML prototype rebuilt as an Expo SDK 54 app. Every feature ported to native components.</div>
+        </div>
+        <div class="commit-tag">platform</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Onboarding flow</div>
+          <div class="commit-desc">5-step guided setup — name, territory, vertical, daily tracking preferences, manager email.</div>
+        </div>
+        <div class="commit-tag">onboarding</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Splash screen</div>
+          <div class="commit-desc">Four arc reveal from center, ROUNDS wordmark pushes forward, medium haptic at peak. No shine, no chime.</div>
+        </div>
+        <div class="commit-tag">brand</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--gold)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Calendar infinite scroll</div>
+          <div class="commit-desc">Month picker, day detail view, red dots on filed days, gold dots on booked onsites.</div>
+        </div>
+        <div class="commit-tag">calendar</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Filing screen sequence</div>
+          <div class="commit-desc">Analyzing shimmer, card shimmer on new stops, tab pip animations. The filing feels alive.</div>
+        </div>
+        <div class="commit-tag">ui</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSIONS 1–4 -->
+  <div class="session">
+    <div class="session-header">
+      <span class="session-label">Sessions 1 – 4</span>
+      <span class="session-date">Mar 15 – 26, 2026</span>
       <span class="session-badge badge-shipped">Shipped</span>
     </div>
     <div class="commits">
@@ -924,6 +1238,22 @@
       <div class="commit">
         <div class="commit-dot" style="background: var(--red)"></div>
         <div class="commit-body">
+          <div class="commit-title">Working web prototype</div>
+          <div class="commit-desc">Single HTML file with live waveform, tab switching, localStorage persistence, and PDF export. Proof the concept worked.</div>
+        </div>
+        <div class="commit-tag">prototype</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--blue)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Auto-roll and stale flagging</div>
+          <div class="commit-desc">Unresolved items roll forward at end of day. 3-day stale flag, 7-day warning. Nothing gets lost.</div>
+        </div>
+        <div class="commit-tag">engine</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
           <div class="commit-title">Background recording</div>
           <div class="commit-desc">Recording continues when the phone locks or another app comes forward. No interruption.</div>
         </div>
@@ -932,19 +1262,28 @@
       <div class="commit">
         <div class="commit-dot" style="background: var(--gold)"></div>
         <div class="commit-body">
-          <div class="commit-title">Calendar with booking intelligence</div>
-          <div class="commit-desc">Infinite scroll calendar. Red dots on filed days, gold dots on booked onsites. Day detail view.</div>
+          <div class="commit-title">Recap with manager notes</div>
+          <div class="commit-desc">Weekly snapshot with rep name header, aggregated stats, and gold editable manager notes section.</div>
         </div>
-        <div class="commit-tag">calendar</div>
+        <div class="commit-tag">recap</div>
       </div>
-      <div class="commit">
-        <div class="commit-dot" style="background: var(--red)"></div>
-        <div class="commit-body">
-          <div class="commit-title">Splash screen</div>
-          <div class="commit-desc">Four arc reveal from center, ROUNDS wordmark pushes forward, medium haptic at peak. No shine, no chime.</div>
-        </div>
-        <div class="commit-tag">brand</div>
-      </div>
+    </div>
+  </div>
+
+  <div class="roadmap">
+    <div class="roadmap-header">
+      <span class="roadmap-label">Roadmap</span>
+      <div class="roadmap-line"></div>
+    </div>
+    <div class="roadmap-card">
+      <div class="roadmap-title">v1 Roadmap</div>
+      <div class="roadmap-desc">25 sessions. Voice pipeline, four document types, filing engine, calendar intelligence, search, exports, coach marks, shimmer system, text input, TestFlight build. The foundation is complete.</div>
+      <span class="roadmap-badge badge-complete">Complete</span>
+    </div>
+    <div class="roadmap-card">
+      <div class="roadmap-title">v2 Roadmap</div>
+      <div class="roadmap-desc">Full UX overhaul. Mic button redesign, recording animations, Scout tab re-vision with territory intelligence tiers, Supabase sync backend, and refined interactions across every screen. Coming soon.</div>
+      <span class="roadmap-badge badge-coming">Coming Soon</span>
     </div>
   </div>
 
