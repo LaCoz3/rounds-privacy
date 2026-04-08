@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rounds — Security</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #1C1B1A;
+    --surface: #252422;
+    --raised: #2E2C2A;
+    --border: #3D3B38;
+    --border-med: rgba(255,255,255,0.10);
+    --ink: #F0EDE8;
+    --muted: #9A9590;
+    --hint: #5A5753;
+    --red: #D94F4F;
+    --red-dim: rgba(217,79,79,0.12);
+    --blue: #4A7EC4;
+    --blue-dim: rgba(74,126,196,0.12);
+    --gold: #BF9424;
+    --gold-dim: rgba(191,148,36,0.12);
+    --green: #4A9E6E;
+    --green-dim: rgba(74,158,110,0.12);
+    --purple: #8860C8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .page { max-width: 680px; margin: 0 auto; padding: 56px 24px 80px; }
+
+  .header { margin-bottom: 48px; }
+  .header-top { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+  .wordmark { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); }
+  .headline { font-family: 'Space Grotesk', sans-serif; font-size: 34px; font-weight: 700; line-height: 1.15; color: var(--ink); margin-bottom: 14px; }
+  .subtitle { font-size: 16px; color: var(--muted); max-width: 560px; line-height: 1.65; }
+
+  .divider { height: 1px; background: var(--border); margin: 36px 0; opacity: 0.6; }
+
+  .section { margin-bottom: 40px; }
+  .section-label { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--hint); margin-bottom: 14px; }
+  .section-title { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+  .section p { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 10px; }
+  .section p:last-child { margin-bottom: 0; }
+
+  /* Flow steps */
+  .flow { display: flex; flex-direction: column; gap: 0; margin-top: 18px; }
+  .flow-step { display: flex; align-items: flex-start; gap: 18px; position: relative; padding-bottom: 24px; }
+  .flow-step:last-child { padding-bottom: 0; }
+  .flow-indicator { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 34px; }
+  .flow-dot { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; flex-shrink: 0; }
+  .flow-dot.red { background: var(--red-dim); color: var(--red); }
+  .flow-dot.green { background: var(--green-dim); color: var(--green); }
+  .flow-dot.blue { background: var(--blue-dim); color: var(--blue); }
+  .flow-dot.gold { background: var(--gold-dim); color: var(--gold); }
+  .flow-line { width: 1px; flex: 1; min-height: 14px; background: var(--border); margin-top: 6px; }
+  .flow-content { padding-top: 5px; }
+  .flow-title { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .flow-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* Data table */
+  .data-table { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: 13px; }
+  .data-table th { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--hint); text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border-med); }
+  .data-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); color: var(--muted); vertical-align: top; }
+  .data-table td:first-child { color: var(--ink); font-weight: 500; white-space: nowrap; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .status { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; }
+  .status.green { color: var(--green); background: var(--green-dim); }
+  .status.gold { color: var(--gold); background: var(--gold-dim); }
+
+  /* Shield cards */
+  .shield-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+  .shield-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+  .shield-marker { width: 6px; height: 6px; border-radius: 50%; margin-bottom: 12px; }
+  .shield-title { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
+  .shield-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+
+  footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .footer-word { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hint); }
+  .footer-right { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--hint); letter-spacing: 0.03em; }
+
+  @media (max-width: 480px) {
+    .page { padding: 36px 16px 60px; }
+    .headline { font-size: 26px; }
+    .shield-grid { grid-template-columns: 1fr; }
+    .data-table { font-size: 12px; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-top">
+      <svg width="32" height="24" viewBox="0 80 680 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 0 300 C 160 300 200 90 340 90 C 480 90 520 300 680 300" stroke="#D94F4F" stroke-width="22" stroke-linecap="round" fill="none"/>
+        <path d="M 0 330 C 170 330 205 155 340 155 C 475 155 510 330 680 330" stroke="#4A7EC4" stroke-width="22" stroke-linecap="round" fill="none"/>
+        <path d="M 0 352 C 170 352 205 525 340 525 C 475 525 510 352 680 352" stroke="#BF9424" stroke-width="22" stroke-linecap="round" fill="none"/>
+        <path d="M 0 382 C 160 382 200 590 340 590 C 480 590 520 382 680 382" stroke="#8860C8" stroke-width="22" stroke-linecap="round" fill="none"/>
+      </svg>
+      <span class="wordmark">ROUNDS</span>
+    </div>
+    <h1 class="headline">Security and Privacy</h1>
+    <p class="subtitle">How Rounds handles your data, where it lives, and what the app will never do.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- DATA FLOW -->
+  <div class="section">
+    <div class="section-label">Data flow</div>
+    <div class="section-title">What happens when you record a round</div>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-indicator">
+          <div class="flow-dot red">1</div>
+          <div class="flow-line"></div>
+        </div>
+        <div class="flow-content">
+          <div class="flow-title">Audio goes to Whisper for transcription</div>
+          <div class="flow-desc">Your voice recording is sent over HTTPS to OpenAI Whisper through a Cloudflare proxy. The audio is transcribed to text and discarded. Rounds never stores your audio anywhere.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-indicator">
+          <div class="flow-dot blue">2</div>
+          <div class="flow-line"></div>
+        </div>
+        <div class="flow-content">
+          <div class="flow-title">Text goes to Claude for filing</div>
+          <div class="flow-desc">Only the text transcript reaches Claude, not audio. Claude reads it, sorts it into your four document types, and returns structured data. The transcript is not stored server-side.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-indicator">
+          <div class="flow-dot green">3</div>
+        </div>
+        <div class="flow-content">
+          <div class="flow-title">Filed data saves to your device</div>
+          <div class="flow-desc">The structured result comes back to your phone and is saved locally. From this point forward, it never leaves your device. No cloud backup, no sync, no server.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- WHERE DATA LIVES -->
+  <div class="section">
+    <div class="section-label">Where everything lives</div>
+    <div class="section-title">Nothing hides on a server you can't see</div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Location</th>
+          <th>Stored?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Your filed rounds</td>
+          <td>On your phone</td>
+          <td><span class="status green">on device only</span></td>
+        </tr>
+        <tr>
+          <td>Profile and settings</td>
+          <td>On your phone</td>
+          <td><span class="status green">on device only</span></td>
+        </tr>
+        <tr>
+          <td>Calendar events</td>
+          <td>On your phone</td>
+          <td><span class="status green">on device only</span></td>
+        </tr>
+        <tr>
+          <td>Audio recordings</td>
+          <td>Sent to Whisper, then discarded</td>
+          <td><span class="status gold">transient</span></td>
+        </tr>
+        <tr>
+          <td>Text transcripts</td>
+          <td>Sent to Claude, then discarded</td>
+          <td><span class="status gold">transient</span></td>
+        </tr>
+        <tr>
+          <td>API keys</td>
+          <td>Cloudflare Worker (encrypted)</td>
+          <td><span class="status green">encrypted at rest</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- HOW IT'S BUILT -->
+  <div class="section">
+    <div class="section-label">How the app is built</div>
+    <div class="section-title">Security by design</div>
+
+    <div class="shield-grid">
+      <div class="shield-card">
+        <div class="shield-marker" style="background: var(--red);"></div>
+        <div class="shield-title">Zero keys on your phone</div>
+        <div class="shield-desc">All API keys live on a Cloudflare Worker, encrypted at rest. Your phone never sees them. Even if someone had your device, there are no keys to find.</div>
+      </div>
+      <div class="shield-card">
+        <div class="shield-marker" style="background: var(--blue);"></div>
+        <div class="shield-title">Every request is authenticated</div>
+        <div class="shield-desc">A shared secret header authenticates your app to the server on every request. No valid header, no access to the AI services.</div>
+      </div>
+      <div class="shield-card">
+        <div class="shield-marker" style="background: var(--gold);"></div>
+        <div class="shield-title">No accounts, no passwords</div>
+        <div class="shield-desc">There is no Rounds account to hack. No email and password combo. No login screen. Your data exists only on the device in your hand.</div>
+      </div>
+      <div class="shield-card">
+        <div class="shield-marker" style="background: var(--purple);"></div>
+        <div class="shield-title">Delete everything in one tap</div>
+        <div class="shield-desc">Settings > Delete All Data. Two confirmation steps, then it's gone. Every round, every note, every setting. Wiped permanently.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- THIRD PARTIES -->
+  <div class="section">
+    <div class="section-label">Third-party services</div>
+    <div class="section-title">Only two services touch your data</div>
+    <p>Rounds uses exactly two external services, both solely to power the core functionality. Neither is used for tracking, analytics, or advertising.</p>
+
+    <table class="data-table" style="margin-top: 14px;">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>What it receives</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>OpenAI Whisper</td>
+          <td>Audio (discarded after transcription)</td>
+          <td>Speech to text</td>
+        </tr>
+        <tr>
+          <td>Anthropic Claude</td>
+          <td>Text transcript only</td>
+          <td>Filing into documents</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top: 14px;">No analytics SDKs. No ad networks. No tracking pixels. No data brokers.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- HARD RULES -->
+  <div class="section">
+    <div class="section-label">What Rounds will never do</div>
+    <div class="section-title">Hard rules, not suggestions</div>
+    <p>These are built into the architecture. They can't be toggled on or quietly changed in an update.</p>
+
+    <div class="flow" style="margin-top: 18px;">
+      <div class="flow-step">
+        <div class="flow-indicator"><div class="flow-dot red">✕</div><div class="flow-line"></div></div>
+        <div class="flow-content">
+          <div class="flow-title">Never store your audio</div>
+          <div class="flow-desc">Audio is processed in-session and discarded. There is no audio archive, no playback feature, no recordings sitting on a server.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-indicator"><div class="flow-dot red">✕</div><div class="flow-line"></div></div>
+        <div class="flow-content">
+          <div class="flow-title">Never upload your data to a Rounds server</div>
+          <div class="flow-desc">There is no Rounds server. Your filed data lives on your phone. Future sync features will be opt-in and transparent.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-indicator"><div class="flow-dot red">✕</div></div>
+        <div class="flow-content">
+          <div class="flow-title">Never share your information with third parties</div>
+          <div class="flow-desc">No selling data, no marketing partnerships, no "anonymized" data sharing. The only services that see anything are the two AI providers that make the app work.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ROADMAP -->
+  <div class="section">
+    <div class="section-label">On the roadmap</div>
+    <div class="section-title">Team accounts are coming, on your terms</div>
+    <p>Rounds is currently single-device with no accounts and no cloud storage. That's intentional for v1. Team features are coming, and they follow the same principles.</p>
+
+    <div class="flow" style="margin-top: 18px;">
+      <div class="flow-step">
+        <div class="flow-indicator"><div class="flow-dot blue">→</div><div class="flow-line"></div></div>
+        <div class="flow-content">
+          <div class="flow-title">Team accounts</div>
+          <div class="flow-desc">Managers invite reps to a shared workspace. Authentication handled by AWS Cognito. Industry-standard, encrypted, no passwords stored by Rounds.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-indicator"><div class="flow-dot blue">→</div><div class="flow-line"></div></div>
+        <div class="flow-content">
+          <div class="flow-title">Cloud sync (opt-in)</div>
+          <div class="flow-desc">Filed rounds sync across devices and to the team dashboard via AWS. Encrypted in transit and at rest. Solo reps can keep everything on-device if they prefer.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-indicator"><div class="flow-dot blue">→</div></div>
+        <div class="flow-content">
+          <div class="flow-title">Same privacy rules apply</div>
+          <div class="flow-desc">No data selling, no third-party sharing, no analytics tracking. The infrastructure changes. The principles don't.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <svg width="20" height="15" viewBox="0 80 680 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 0 300 C 160 300 200 90 340 90 C 480 90 520 300 680 300" stroke="#D94F4F" stroke-width="22" stroke-linecap="round" fill="none"/>
+        <path d="M 0 330 C 170 330 205 155 340 155 C 475 155 510 330 680 330" stroke="#4A7EC4" stroke-width="22" stroke-linecap="round" fill="none"/>
+        <path d="M 0 352 C 170 352 205 525 340 525 C 475 525 510 352 680 352" stroke="#BF9424" stroke-width="22" stroke-linecap="round" fill="none"/>
+        <path d="M 0 382 C 160 382 200 590 340 590 C 480 590 520 382 680 382" stroke="#8860C8" stroke-width="22" stroke-linecap="round" fill="none"/>
+      </svg>
+      <span class="footer-word">Rounds</span>
+    </div>
+    <span class="footer-right">Security overview · April 2026</span>
+  </footer>
+
+</div>
+</body>
+</html>

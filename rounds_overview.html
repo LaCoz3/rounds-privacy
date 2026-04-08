@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rounds — How It Works</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #1C1B1A;
+    --surface: #252422;
+    --raised: #2E2C2A;
+    --border: #3D3B38;
+    --ink: #F0EDE8;
+    --muted: #9A9590;
+    --hint: #5A5753;
+    --red: #D94F4F;
+    --red-dim: rgba(217,79,79,0.12);
+    --blue: #4A7EC4;
+    --blue-dim: rgba(74,126,196,0.12);
+    --gold: #BF9424;
+    --gold-dim: rgba(191,148,36,0.12);
+    --purple: #8860C8;
+    --purple-dim: rgba(136,96,200,0.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .page { max-width: 680px; margin: 0 auto; padding: 56px 24px 80px; }
+
+  .header { margin-bottom: 48px; }
+  .header-top { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+  .wordmark { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); }
+  .headline { font-family: 'Space Grotesk', sans-serif; font-size: 34px; font-weight: 700; line-height: 1.15; color: var(--ink); margin-bottom: 14px; }
+  .subtitle { font-size: 16px; color: var(--muted); max-width: 560px; line-height: 1.65; }
+
+  .divider { height: 1px; background: var(--border); margin: 36px 0; opacity: 0.6; }
+
+  .section { margin-bottom: 40px; }
+  .section-label { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--hint); margin-bottom: 14px; }
+  .section-title { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+  .section p { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 10px; }
+  .section p:last-child { margin-bottom: 0; }
+  .section p strong { color: var(--ink); font-weight: 600; }
+
+  /* Flow steps */
+  .flow { display: flex; flex-direction: column; gap: 0; margin-top: 18px; }
+  .flow-step { display: flex; align-items: flex-start; gap: 18px; position: relative; padding-bottom: 24px; }
+  .flow-step:last-child { padding-bottom: 0; }
+  .flow-indicator { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 34px; }
+  .flow-dot { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; flex-shrink: 0; }
+  .flow-dot.red { background: var(--red-dim); color: var(--red); }
+  .flow-dot.blue { background: var(--blue-dim); color: var(--blue); }
+  .flow-dot.gold { background: var(--gold-dim); color: var(--gold); }
+  .flow-line { width: 1px; flex: 1; min-height: 14px; background: var(--border); margin-top: 6px; }
+  .flow-content { padding-top: 5px; }
+  .flow-title { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .flow-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* Doc cards */
+  .doc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+  .doc-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px; border-left: 3px solid transparent; }
+  .doc-card.red { border-left-color: var(--red); }
+  .doc-card.blue { border-left-color: var(--blue); }
+  .doc-card.gold { border-left-color: var(--gold); }
+  .doc-card.purple { border-left-color: var(--purple); }
+  .doc-name { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; margin-bottom: 5px; }
+  .doc-card.red .doc-name { color: var(--red); }
+  .doc-card.blue .doc-name { color: var(--blue); }
+  .doc-card.gold .doc-name { color: var(--gold); }
+  .doc-card.purple .doc-name { color: var(--purple); }
+  .doc-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  /* Tagline block */
+  .tagline-block { background: var(--raised); border: 1px solid var(--border); border-radius: 10px; padding: 28px; text-align: center; margin-top: 10px; }
+  .tagline { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .tagline-sub { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--hint); letter-spacing: 0.06em; }
+
+  /* Points */
+  .points { display: flex; flex-direction: column; gap: 14px; margin-top: 14px; }
+  .point { display: flex; gap: 14px; align-items: flex-start; }
+  .point-marker { width: 6px; height: 6px; border-radius: 50%; background: var(--red); margin-top: 7px; flex-shrink: 0; }
+  .point-text { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .point-text strong { color: var(--ink); font-weight: 600; }
+
+  footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .footer-word { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hint); }
+  .footer-right { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--hint); letter-spacing: 0.03em; }
+
+  @media (max-width: 480px) {
+    .page { padding: 36px 16px 60px; }
+    .headline { font-size: 26px; }
+    .doc-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-top">
+      <svg width="32" height="24" viewBox="0 80 680 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 0 300 C 160 300 200 90 340 90 C 480 90 520 300 680 300" stroke="#D94F4F" stroke-width="22" stroke-linecap="round" fill="none"/>
+        <path d="M 0 330 C 170 330 205 155 340 155 C 475 155 510 330 680 330" stroke="#4A7EC4" stroke-width="22" stroke-linecap="round" fill="none"/>
+        <path d="M 0 352 C 170 352 205 525 340 525 C 475 525 510 352 680 352" stroke="#BF9424" stroke-width="22" stroke-linecap="round" fill="none"/>
+        <path d="M 0 382 C 160 382 200 590 340 590 C 480 590 520 382 680 382" stroke="#8860C8" stroke-width="22" stroke-linecap="round" fill="none"/>
+      </svg>
+      <span class="wordmark">ROUNDS</span>
+    </div>
+    <h1 class="headline">Field sales documentation,<br>done out loud.</h1>
+    <p class="subtitle">Rounds is a voice-first iOS app for outside sales reps. Tap the mic, speak your stop notes, and the app files everything into structured documents while you're still in the parking lot.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">How it works</div>
+    <div class="section-title">Speak it. File it. Roll.</div>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-indicator">
+          <div class="flow-dot red">1</div>
+          <div class="flow-line"></div>
+        </div>
+        <div class="flow-content">
+          <div class="flow-title">Tap the mic and talk</div>
+          <div class="flow-desc">After each stop, tap one button and speak your notes naturally. No forms, no typing. Just talk about what happened.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-indicator">
+          <div class="flow-dot blue">2</div>
+          <div class="flow-line"></div>
+        </div>
+        <div class="flow-content">
+          <div class="flow-title">AI transcribes and files</div>
+          <div class="flow-desc">Whisper converts speech to text. Claude reads the transcript and sorts every detail into the right document. Visit logs, follow-ups, weekly recap, scouted leads. Facts stay locked as spoken.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-indicator">
+          <div class="flow-dot gold">3</div>
+        </div>
+        <div class="flow-content">
+          <div class="flow-title">Review and roll</div>
+          <div class="flow-desc">Cards appear instantly. Confirm a status tag on each stop with one tap, make any quick edits, and move on. The whole process takes less time than walking back to the truck.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Four documents, one recording</div>
+    <div class="section-title">Everything files from a single voice note</div>
+    <p>Each recording is sorted into four document types automatically. You never have to think about where something goes.</p>
+
+    <div class="doc-grid">
+      <div class="doc-card red">
+        <div class="doc-name">Round</div>
+        <div class="doc-desc">Today's visit log. Every stop, locked as spoken. Who you saw, what happened, what's next.</div>
+      </div>
+      <div class="doc-card blue">
+        <div class="doc-name">Open</div>
+        <div class="doc-desc">Active follow-ups. Unresolved items roll forward day to day until they're closed.</div>
+      </div>
+      <div class="doc-card gold">
+        <div class="doc-name">Recap</div>
+        <div class="doc-desc">Weekly manager snapshot. Stops, wins, blockers. One page, ready to send.</div>
+      </div>
+      <div class="doc-card purple">
+        <div class="doc-name">Scout</div>
+        <div class="doc-desc">New leads and scouted locations. Territory intelligence captured on the road.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Why it matters</div>
+    <div class="section-title">Notes get lost. Follow-ups get forgotten.</div>
+
+    <div class="points">
+      <div class="point">
+        <div class="point-marker"></div>
+        <div class="point-text"><strong>Eight stops, one steering wheel, zero time to type.</strong> By the end of the day, half the details are gone. The name of the manager at stop three, the part number from stop five, the callback you promised at stop seven.</div>
+      </div>
+      <div class="point">
+        <div class="point-marker"></div>
+        <div class="point-text"><strong>English is now the interface.</strong> LLMs made it possible to speak naturally and get structured output. This architecture was not economically viable two years ago.</div>
+      </div>
+      <div class="point">
+        <div class="point-marker"></div>
+        <div class="point-text"><strong>Form-based CRMs can't replicate this.</strong> Competitors are built around forms at the core. Bolting voice onto a form-based system produces a voice-to-form tool, not a voice-first filing system.</div>
+      </div>
+      <div class="point">
+        <div class="point-marker"></div>
+        <div class="point-text"><strong>Everything stays on device.</strong> No cloud accounts, no syncing, no data sharing. Audio is processed in-session and never stored. You own your data.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Manager reporting</div>
+    <div class="section-title">One tap to a shareable PDF</div>
+    <p>Every filed round can be exported as a clean, branded PDF report. Formatted and ready to send to your manager. No reformatting, no copy-pasting into a spreadsheet.</p>
+
+    <div class="flow" style="margin-top: 18px;">
+      <div class="flow-step">
+        <div class="flow-indicator">
+          <div class="flow-dot red">→</div>
+          <div class="flow-line"></div>
+        </div>
+        <div class="flow-content">
+          <div class="flow-title">Round Log PDF</div>
+          <div class="flow-desc">Every stop from the day. Business name, contact, visit summary, status tag, and next action. Formatted as a professional field report with your name, territory, and date.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-indicator">
+          <div class="flow-dot gold">→</div>
+        </div>
+        <div class="flow-content">
+          <div class="flow-title">Recap PDF</div>
+          <div class="flow-desc">Weekly summary. Total stops, drops, signups, and manager notes. One page. Hand it to your manager at the end of the week or email it directly from your phone.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="tagline-block">
+      <div class="tagline">File your stops before you leave the parking lot.</div>
+      <div class="tagline-sub">Say it. File it. Roll.</div>
+    </div>
+  </div>
+
+  <footer>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <svg width="20" height="15" viewBox="0 80 680 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 0 300 C 160 300 200 90 340 90 C 480 90 520 300 680 300" stroke="#D94F4F" stroke-width="22" stroke-linecap="round" fill="none"/>
+        <path d="M 0 330 C 170 330 205 155 340 155 C 475 155 510 330 680 330" stroke="#4A7EC4" stroke-width="22" stroke-linecap="round" fill="none"/>
+        <path d="M 0 352 C 170 352 205 525 340 525 C 475 525 510 352 680 352" stroke="#BF9424" stroke-width="22" stroke-linecap="round" fill="none"/>
+        <path d="M 0 382 C 160 382 200 590 340 590 C 480 590 520 382 680 382" stroke="#8860C8" stroke-width="22" stroke-linecap="round" fill="none"/>
+      </svg>
+      <span class="footer-word">Rounds</span>
+    </div>
+    <span class="footer-right">Field confidence system</span>
+  </footer>
+
+</div>
+</body>
+</html>
