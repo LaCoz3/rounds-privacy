@@ -519,18 +519,18 @@
         <div class="commit-tag">calendar</div>
       </div>
       <div class="commit">
-        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-dot" style="background: var(--gold)"></div>
         <div class="commit-body">
-          <div class="commit-title">Whisper transcript preview</div>
-          <div class="commit-desc">Read-only transcript box appears during filing after voice recording. Display only — completely disconnected from the filing pipeline. Gone once filed.</div>
+          <div class="commit-title">Upcoming events list</div>
+          <div class="commit-desc">Gold toggle in calendar header shows all future booked events in a collapsible list. Sorted by date, tap to jump. AI and manual events both appear.</div>
         </div>
-        <div class="commit-tag">ux</div>
+        <div class="commit-tag">calendar</div>
       </div>
       <div class="commit">
         <div class="commit-dot" style="background: var(--red)"></div>
         <div class="commit-body">
-          <div class="commit-title">Bottom sheet pull-to-dismiss</div>
-          <div class="commit-desc">Gray pill handle on bottom sheets now does what it looks like it should. Pull down to dismiss. Applied to EndOfRoundSheet — others already had it.</div>
+          <div class="commit-title">Pull-to-dismiss on all bottom sheets</div>
+          <div class="commit-desc">ConfirmRecordSheet, EndOfRoundSheet, and BusinessDetailSheet all wired with drag-to-dismiss. Pill hit area, 100px threshold, no conflict with buttons.</div>
         </div>
         <div class="commit-tag">gesture</div>
       </div>
@@ -557,6 +557,30 @@
           <div class="commit-desc">Open Rounds swipe activation area widened slightly. Easier to grab without triggering accidental resolves.</div>
         </div>
         <div class="commit-tag">gesture</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Filing false-positive error killed</div>
+          <div class="commit-desc">Rounds were saving correctly but showing "something went wrong" anyway. Root cause: matchScout crashing on missing roundLog key after save. Optional chaining fix.</div>
+        </div>
+        <div class="commit-tag">fix</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Filing timeouts and error codes overhauled</div>
+          <div class="commit-desc">Transcription timeout raised to 120s for cellular uploads. Filing timeout to 60s. Specific error codes now surface real messages instead of one generic catch-all.</div>
+        </div>
+        <div class="commit-tag">reliability</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Health check now tests real path</div>
+          <div class="commit-desc">Settings connection test changed from OPTIONS (no auth) to POST with secret header. False green checkmarks eliminated.</div>
+        </div>
+        <div class="commit-tag">security</div>
       </div>
     </div>
   </div>
