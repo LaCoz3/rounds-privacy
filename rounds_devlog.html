@@ -472,7 +472,7 @@
   <div class="status-bar" style="border-color: var(--gold); margin-bottom: 20px;">
     <div class="status-dot" style="background: var(--gold);"></div>
     <div class="status-text">
-      <strong>Roadmap v1 complete.</strong> 25 sessions from blank project to TestFlight. Roadmap v2 coming soon — UX overhaul, Scout tab re-vision, and new features.
+      <strong>Roadmap v2 underway.</strong> Recording UI redesigned. Filing overlay rebuilt. 26 sessions deep. Next: filing modes, App Store submission, Scout intelligence.
     </div>
   </div>
 
@@ -485,17 +485,86 @@
     <div class="in-progress-cards">
       <div class="progress-card red">
         <div>
-          <div class="progress-title">Mic Button Visual Redesign</div>
-          <div class="progress-desc">Glowing red mic hero element with right-to-left waveform animation during recording. The mic is the app — make it look like it.</div>
-          <div class="progress-caveat">session 26 · opus</div>
+          <div class="progress-title">Exact vs Polished Filing Modes</div>
+          <div class="progress-desc">Two-mode setting: Exact keeps your words as-spoken, Polished lets Claude structure and clean up. Touches prompts, worker, and Settings.</div>
+          <div class="progress-caveat">session 27 · sonnet</div>
         </div>
       </div>
-      <div class="progress-card red">
+      <div class="progress-card gold">
         <div>
-          <div class="progress-title">Start Round Button Review</div>
-          <div class="progress-desc">Rethinking the post-mic-tap flow. Does the confirmation sheet earn its place, or should recording feel more immediate?</div>
-          <div class="progress-caveat">session 26 · subject to change</div>
+          <div class="progress-title">App Store Submission</div>
+          <div class="progress-desc">Screenshots, metadata, final security checklist, splash font polish. Everything needed to go from TestFlight to public.</div>
+          <div class="progress-caveat">session 28 · target</div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="session-divider"></div>
+
+  <!-- SESSION 26 -->
+  <div class="session">
+    <div class="session-header">
+      <span class="session-label">Session 26</span>
+      <span class="session-date">Apr 8, 2026</span>
+      <span class="session-badge badge-shipped">Shipped</span>
+    </div>
+    <div class="commits">
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Recording bubble UI</div>
+          <div class="commit-desc">Full-screen recording takeover replaced with compact floating bubble above the mic button. 85% width, rounded corners, right-to-left neon red waveform inside. Cancel X to discard. Snappy and lightweight — built for 15 stops a day.</div>
+        </div>
+        <div class="commit-tag">recording</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Mic idle glow</div>
+          <div class="commit-desc">Subtle inner red pulse on the mic button. 3.5s breathing cycle at 10% opacity. Always alive, never loud. The mic is the hero — now it looks like it.</div>
+        </div>
+        <div class="commit-tag">design</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Filing overlay redesigned</div>
+          <div class="commit-desc">Old four-bar loading animation and rectangular neural network removed. New overlay: Rounds logo SVG with gentle pulse, four-color gradient progress bar, cycling status text with shimmer transitions. Neural ring pulses quietly behind.</div>
+        </div>
+        <div class="commit-tag">filing</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Start Round confirmation bar</div>
+          <div class="commit-desc">Clunky confirmation popup replaced with slim floating bar above the mic. Tap Start Round and it morphs into the recording bubble. Same position, same style — one continuous flow.</div>
+        </div>
+        <div class="commit-tag">recording</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: #5A5753"></div>
+        <div class="commit-body">
+          <div class="commit-title">CORS stripped from worker</div>
+          <div class="commit-desc">Wildcard Access-Control-Allow-Origin and OPTIONS preflight handler removed from Cloudflare Worker. React Native doesn't use CORS. Shared secret header is the only gate.</div>
+        </div>
+        <div class="commit-tag">security</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--red)"></div>
+        <div class="commit-body">
+          <div class="commit-title">Collapsed card preview</div>
+          <div class="commit-desc">Stop cards now show a visitSummary one-liner below the business name when collapsed. 11px muted text with ellipsis. Context at a glance without tapping.</div>
+        </div>
+        <div class="commit-tag">ui</div>
+      </div>
+      <div class="commit">
+        <div class="commit-dot" style="background: var(--gold)"></div>
+        <div class="commit-body">
+          <div class="commit-title">loopsClosed → resolved</div>
+          <div class="commit-desc">Old "close the loop" branding variable renamed to resolved across the entire codebase. Recap, calendar, export, types — all cleaned up.</div>
+        </div>
+        <div class="commit-tag">cleanup</div>
       </div>
     </div>
   </div>
@@ -1306,8 +1375,8 @@
     </div>
     <div class="roadmap-card">
       <div class="roadmap-title">v2 Roadmap</div>
-      <div class="roadmap-desc">Full UX overhaul. Mic button redesign, recording animations, Scout tab re-vision with territory intelligence tiers, Supabase sync backend, and refined interactions across every screen. Coming soon.</div>
-      <span class="roadmap-badge badge-coming">Coming Soon</span>
+      <div class="roadmap-desc">Recording UI redesigned. Filing overlay rebuilt. Mic is the hero again. Next: Exact vs Polished filing modes, App Store submission, Scout intelligence tiers, Supabase sync backend.</div>
+      <span class="roadmap-badge badge-coming">In Progress</span>
     </div>
   </div>
 
